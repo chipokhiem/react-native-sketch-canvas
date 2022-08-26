@@ -44,6 +44,7 @@ export interface SketchCanvasProps {
 
     localSourceImage?: LocalSourceImage;
     touchEnabled?: boolean;
+    zoomLevel?: number;
 
     /**
      * Android Only: Provide a Dialog Title for the Image Saving PermissionDialog. Defaults to empty string if not set
