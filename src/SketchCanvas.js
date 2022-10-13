@@ -78,6 +78,7 @@ class SketchCanvas extends React.Component {
         this._offset = { x: 0, y: 0 };
         this._size = { width: 0, height: 0 };
         this._initialized = false;
+        this.createPanResponder();
     }
 
     clear() {
@@ -160,7 +161,7 @@ class SketchCanvas extends React.Component {
         }
     }
 
-    componentWillMount() {
+    createPanResponder() {
         this.panResponder = PanResponder.create({
             // Ask to be the responder:
             onStartShouldSetPanResponder: (evt, gestureState) => true,
