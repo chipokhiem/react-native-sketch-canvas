@@ -226,7 +226,15 @@ class SketchCanvas extends React.Component {
                     []
                 );
             },
-
+            onPanResponderTerminate: (evt, gestureState) => {
+                // Another component has become the responder, so this gesture should be cancelled
+                if (!this.props.touchEnabled) return;
+                if (this._path) {
+                    this.props.onStrokeEnd({ path: this._path, size: this._size, drawer: this.props.user });
+                    this._paths.push({ path: this._path, size: this._size, drawer: this.props.user });
+                }
+                UIManager.dispatchViewManagerCommand(this._handle, UIManager.RNSketchCanvas.Commands.endPath, []);
+            },
             onShouldBlockNativeResponder: (evt, gestureState) => {
                 return true;
             }
