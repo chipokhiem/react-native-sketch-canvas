@@ -241,6 +241,7 @@ class SketchCanvas extends React.Component {
                     this.props.onStrokeEnd({ path: this._path, size: this._size, drawer: this.props.user });
                     this._paths.push({ path: this._path, size: this._size, drawer: this.props.user });
                 }
+                this._path = null;
                 UIManager.dispatchViewManagerCommand(
                     this._handle,
                     UIManager.getViewManagerConfig("RNSketchCanvas").Commands.endPath,
@@ -254,6 +255,7 @@ class SketchCanvas extends React.Component {
                     this.props.onStrokeEnd({ path: this._path, size: this._size, drawer: this.props.user });
                     this._paths.push({ path: this._path, size: this._size, drawer: this.props.user });
                 }
+                this._path = null;
                 UIManager.dispatchViewManagerCommand(this._handle, UIManager.RNSketchCanvas.Commands.endPath, []);
             },
             onPanResponderTerminationRequest: (evt, gestureState) => true,
